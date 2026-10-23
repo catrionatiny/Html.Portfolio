@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f7f7f6">
+<title>แบบบันทึกข้อมูลหนี้ | สำรวจยอดเพื่อวางแผน</title>
+<style>
+:root{--bg:#f7f7f6;--card:#fff;--ink:#1c1d1e;--muted:#697079;--line:#e3e5e7;--soft:#f1f2f3;--accent:#202426;--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Thonburi","Noto Sans Thai",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+main{width:min(1040px,100%);margin:0 auto;padding:32px 18px 110px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.25;letter-spacing:-.5px;margin:4px 0 14px;font-weight:750}h2{margin:0;font-size:20px;line-height:1.4}h3{font-size:18px;margin:0}
+p{margin:0}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.15em;color:#696c72}.intro{color:#555b63;max-width:730px;margin-bottom:22px}.small{font-size:13px;color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-top:18px;box-shadow:0 3px 15px #0c16200a}.privacy{border-left:3px solid #616a6f;padding:11px 14px;background:#eff1f1;color:#474f54;border-radius:0 10px 10px 0;font-size:13px;margin-top:14px}.section-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:17px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.full{grid-column:1/-1}label{font-size:14px;font-weight:650;color:#34383d}input,select,textarea{font:inherit;color:var(--ink);background:#fff;width:100%;border:1px solid #d4d8dc;border-radius:10px;padding:11px 12px;min-height:46px;outline:none;transition:box-shadow .15s,border-color .15s}input:focus,select:focus,textarea:focus{border-color:#59636c;box-shadow:0 0 0 3px #59636c19}textarea{min-height:86px;resize:vertical}input[type=number]{font-variant-numeric:tabular-nums}.money-inline{display:flex;gap:8px;align-items:center}.money-inline input{min-width:0}.suffix{white-space:nowrap;color:#666e76;font-size:13px}.field-hint{font-size:12px;color:#697079}.btn{appearance:none;border:1px solid #cbd0d4;border-radius:11px;background:#fff;color:#222629;font:inherit;font-weight:700;cursor:pointer;padding:11px 16px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;white-space:normal}.btn:active{transform:translateY(1px)}.btn.primary{background:#24292c;border-color:#24292c;color:#fff}.btn.ghost{background:transparent}.btn.danger{border-color:#e8d0d0;color:#9d3939}.btn:focus-visible{outline:3px solid #aeb8c2;outline-offset:2px}.remove{font-size:13px;min-height:36px;padding:4px 10px}.badge{display:inline-flex;padding:5px 10px;border-radius:100px;background:#f0f1f2;color:#555a60;font-size:12px;font-weight:700}.debt-card{border:1px solid #dedfe2;border-radius:14px;padding:17px;margin-bottom:14px;background:#fff}.debt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:14px}.head-right{display:flex;gap:10px;align-items:center}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.metric{background:#f4f5f5;border:1px solid #e8eaeb;border-radius:14px;padding:16px}.metric-label{font-size:13px;color:#666c73}.metric-value{font-size:clamp(19px,3vw,26px);line-height:1.3;margin-top:5px;font-weight:800;letter-spacing:-.4px;overflow-wrap:anywhere}.metric-unit{font-size:12px;font-weight:500;color:#666}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.hint-bottom{color:#687078;font-size:13px;margin-top:12px}.bottom{margin-top:28px;font-size:12px;color:#7c8288;text-align:center}.save-indicator{font-size:12px;color:#4d6455}.mini-bar{display:flex;justify-content:space-between;align-items:center;gap:8px}.summary-table{border-collapse:collapse;width:100%;min-width:580px;font-size:13px}.summary-table th,.summary-table td{padding:10px;text-align:left;border-bottom:1px solid #ebedef;vertical-align:top}.summary-table th{color:#61676d;font-weight:700;background:#f7f7f7}.table-scroll{overflow-x:auto;border:1px solid #eaebec;border-radius:10px}.note{padding:14px 16px;background:#f6f6f4;border:1px solid #e7e9e8;border-radius:11px;color:#575f64;font-size:13px}.hide{display:none!important}#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);max-width:min(94vw,600px);background:#212527;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 6px 25px #0003;display:none;font-size:14px;z-index:10;text-align:center}.empty{font-size:14px;color:#7a7c80;padding:10px 2px}
+@media(max-width:700px){main{padding:25px 13px 90px}.fields{grid-template-columns:1fr}.card{padding:16px}.summary{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}.section-head{align-items:center}.actions .btn{width:100%}.debt-card{padding:14px}.intro{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{body{background:white}main{padding:0}.btn,.privacy,.actions,.bottom,#toast{display:none!important}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">DEBT OVERVIEW · แบบฟอร์มส่วนตัว</div>
+  <h1>แบบบันทึกข้อมูลหนี้</h1>
+  <p class="intro">กรอกหนี้ <b>หนึ่งเจ้าหนี้ต่อหนึ่งรายการ</b> เพื่อรวมยอดทั้งหมดและวางแผนจัดการหนี้อย่างเป็นระบบ กรอกเท่าที่ทราบก่อนได้ ไม่จำเป็นต้องรู้ทุกช่อง</p>
+  <div class="privacy"><b>ความเป็นส่วนตัว:</b> หน้านี้ไม่ส่งข้อมูลไปยังเซิร์ฟเวอร์ ข้อมูลจะบันทึกไว้ในเบราว์เซอร์ของอุปกรณ์นี้เท่านั้น และจะส่งให้ผู้อื่นก็ต่อเมื่อกดแชร์หรือคัดลอกเอง <b>อย่ากรอกเลขบัตรประชาชน เลขบัญชีเต็ม รหัสผ่าน หรือ OTP</b></div>
+  <div class="card">
+    <div class="section-head"><h2>ข้อมูลเบื้องต้น</h2><span class="save-indicator" id="saveStatus">พร้อมกรอก</span></div>
+    <div class="fields">
+      <div class="field"><label for="borrower">ชื่อผู้กรอก / ชื่อเล่น (ไม่บังคับ)</label><input id="borrower" data-global="borrower" placeholder="เช่น เจ๊" autocomplete="off"></div>
+      <div class="field"><label for="asof">วันที่ตรวจยอด</label><input id="asof" data-global="asof" type="date"></div>
+      <div class="field"><label for="income">รายได้ปัจจุบันต่อเดือน (บาท)</label><input id="income" data-global="income" type="number" inputmode="decimal" min="0" placeholder="ถ้ายังไม่มีรายได้ ใส่ 0"></div>
+      <div class="field"><label for="living">ค่าใช้จ่ายจำเป็นต่อเดือน (บาท)</label><input id="living" data-global="living" type="number" inputmode="decimal" min="0" placeholder="อาหาร เดินทาง ค่ายา ฯลฯ"></div>
+      <div class="field"><label for="included">ยอดหนี้รวมเงินที่ยืมคนในครอบครัวด้วยหรือไม่?</label><select id="included" data-global="included"><option value="unknown">ยังไม่แน่ใจ</option><option value="yes">รวมแล้ว</option><option value="no">ยังไม่รวม</option></select></div>
+      <div class="field"><label for="reported">ยอดหนี้รวมที่เคยประมาณไว้ (บาท)</label><input id="reported" data-global="reported" type="number" inputmode="decimal" min="0" placeholder="เช่น 780000"><span class="field-hint">ใช้เปรียบเทียบกับยอดรายเจ้าหนี้ ไม่ถูกนับซ้ำ</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-head"><div><h2>รายละเอียดเจ้าหนี้</h2><p class="small">เพิ่มรายการให้ครบทุกเจ้าหนี้ รวมทั้งคนรู้จัก</p></div><span class="badge" id="countBadge">1 รายการ</span></div>
+    <div id="debtList"></div>
+    <button class="btn" id="addDebt" type="button">＋ เพิ่มเจ้าหนี้อีกหนึ่งราย</button>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>สรุปยอดอัตโนมัติ</h2><span class="badge">หน่วย: บาท</span></div>
+    <div class="summary">
+      <div class="metric"><p class="metric-label">ยอดหนี้คงเหลือรวม</p><div class="metric-value" id="sumBalance">0</div></div>
+      <div class="metric"><p class="metric-label">ค่างวดรวมต่อเดือน</p><div class="metric-value" id="sumMonthly">0</div></div>
+      <div class="metric"><p class="metric-label">ยอดปิดบัญชีรวมที่ระบุ</p><div class="metric-value" id="sumPayoff">0</div><p class="metric-unit" id="payoffInfo">เฉพาะรายที่กรอกยอดปิดบัญชี</p></div>
+    </div>
+    <p class="hint-bottom" id="compareText"></p>
+    <div class="table-scroll" style="margin-top:17px"><table class="summary-table"><thead><tr><th>เจ้าหนี้</th><th>ประเภท</th><th>ยอดคงเหลือ</th><th>ค่างวด/เดือน</th><th>สถานะ</th></tr></thead><tbody id="summaryRows"></tbody></table></div>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>ส่งข้อมูลกลับ</h2></div>
+    <div class="field"><label for="generalNotes">ข้อมูลเพิ่มเติม (ไม่บังคับ)</label><textarea id="generalNotes" data-global="notes" placeholder="เช่น มีเจ้าหนี้โทรทวงทุกวัน หรือรายใดอยู่ระหว่างเจรจา"></textarea></div>
+    <div class="actions">
+      <button id="share" type="button" class="btn primary">↗ แชร์ข้อมูล (เลือก LINE)</button>
+      <button id="copy" type="button" class="btn">▣ คัดลอกสรุป</button>
+      <button id="csv" type="button" class="btn">↓ ดาวน์โหลด CSV</button>
+      <button id="print" type="button" class="btn">▤ พิมพ์ / บันทึก PDF</button>
+    </div>
+    <p class="hint-bottom">ปุ่ม “แชร์ข้อมูล” จะเปิดเมนูแชร์ของโทรศัพท์เพื่อเลือก LINE หรือแอปอื่น ข้อมูลจะไม่ได้ส่งอัตโนมัติ หากไม่พบ LINE ให้กด “คัดลอกสรุป” แล้ววางในแชต</p>
+  </div>
+  <div class="mini-bar" style="margin-top:18px;gap:18px"><span class="small">ข้อมูลจะอยู่ในเครื่องจนกว่าจะล้างข้อมูลหรือเบราว์เซอร์ลบข้อมูลเว็บไซต์</span><button class="btn danger remove" id="clear" type="button">ล้างข้อมูลทั้งหมด</button></div>
+  <div class="bottom">แบบฟอร์มช่วยรวบรวมข้อมูล ไม่ใช่คำแนะนำทางกฎหมายหรือการเงิน • ไม่ต้องแนบข้อมูลยืนยันตัวตน</div>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+const KEY='debt_form_th_v1';
+const emptyDebt=()=>({id:'d'+Math.random().toString(36).slice(2,12),creditor:'',kind:'',balance:'',rate:'',rateUnit:'year',monthly:'',due:'',status:'',security:'',payoff:'',overdue:'',notes:''});
+const fresh=()=>({borrower:'',asof:new Date().toISOString().slice(0,10),income:'',living:'',included:'unknown',reported:'',notes:'',debts:[emptyDebt()]});
+let data;
+try{const stored=localStorage.getItem(KEY);data=stored?JSON.parse(stored):fresh();if(!Array.isArray(data.debts)||!data.debts.length)data.debts=[emptyDebt()];}catch(e){data=fresh();}
+const $=id=>document.getElementById(id);
+const fmt=n=>Number(n||0).toLocaleString('th-TH',{maximumFractionDigits:2});
+const num=v=>{const n=Number(v);return Number.isFinite(n)&&n>=0?n:0;};
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const typeLabels={credit:'บัตรเครดิต',cashcard:'บัตรกดเงินสด',bank:'สินเชื่อธนาคาร / บริษัท',app:'สินเชื่อแอป',informal:'หนี้นอกระบบ',relative:'ยืมคนรู้จัก / ครอบครัว',other:'อื่น ๆ'};
+const statusLabels={normal:'ชำระปกติ',late:'ค้างชำระ',sued:'ถูกฟ้อง / มีคดี',negotiating:'กำลังเจรจา',unknown:'ไม่แน่ใจ'};
+const securityLabels={none:'ไม่มี',car:'รถ',house:'บ้าน / ที่ดิน',guarantor:'ผู้ค้ำประกัน',other:'อื่น ๆ',unknown:'ไม่แน่ใจ'};
+function selectOptions(options,val,placeholder){return `<option value="">${esc(placeholder)}</option>`+Object.entries(options).map(([k,v])=>`<option value="${esc(k)}" ${val===k?'selected':''}>${esc(v)}</option>`).join('');}
+function field(id,label,control,hint='',full=false){return `<div class="field ${full?'full':''}"><label for="${id}">${label}</label>${control}${hint?`<span class="field-hint">${hint}</span>`:''}</div>`;}
+function inp(d,key,placeholder='',type='text'){const id=`${d.id}_${key}`;return `<input id="${id}" data-id="${esc(d.id)}" data-key="${key}" type="${type}" ${type==='number'?'inputmode="decimal" min="0"':''} placeholder="${esc(placeholder)}" value="${esc(d[key])}">`;}
+function sel(d,key,options,placeholder='เลือก'){const id=`${d.id}_${key}`;return `<select id="${id}" data-id="${esc(d.id)}" data-key="${key}">${selectOptions(options,d[key],placeholder)}</select>`;}
+function renderDebts(){
+ $('debtList').innerHTML=data.debts.map((d,i)=>`<div class="debt-card" data-card="${esc(d.id)}"><div class="debt-head"><h3>เจ้าหนี้รายที่ ${i+1}</h3><div class="head-right"><button type="button" class="btn danger remove" data-remove="${esc(d.id)}" aria-label="ลบเจ้าหนี้รายที่ ${i+1}">ลบรายการ</button></div></div><div class="fields">
+ ${field(d.id+'_creditor','1. ชื่อเจ้าหนี้',inp(d,'creditor','ชื่อธนาคาร บริษัท หรือบุคคล'))}
+ ${field(d.id+'_kind','2. ประเภทหนี้',sel(d,'kind',typeLabels,'เลือกประเภทหนี้'))}
+ ${field(d.id+'_balance','3. ยอดหนี้คงเหลือ (บาท)',inp(d,'balance','เช่น 50000','number'),'ยอดล่าสุดตามวันที่ตรวจสอบ')}
+ <div class="field"><label for="${d.id}_rate">4. อัตราดอกเบี้ย (%)</label><div class="money-inline">${inp(d,'rate','ถ้าทราบ','number')}<select aria-label="หน่วยดอกเบี้ย" data-id="${esc(d.id)}" data-key="rateUnit" style="width:118px;flex-shrink:0"><option value="year" ${d.rateUnit==='year'?'selected':''}>ต่อปี</option><option value="month" ${d.rateUnit==='month'?'selected':''}>ต่อเดือน</option></select></div></div>
+ ${field(d.id+'_monthly','5. ค่างวดต่อเดือน (บาท)',inp(d,'monthly','เช่น 5000','number'))}
+ ${field(d.id+'_due','6. วันครบกำหนด',inp(d,'due','เช่น ทุกวันที่ 15 หรือ 25/10/69'))}
+ ${field(d.id+'_status','7. สถานะหนี้',sel(d,'status',statusLabels,'เลือกสถานะ'))}
+ ${field(d.id+'_security','8. หลักประกัน',sel(d,'security',securityLabels,'เลือกหลักประกัน'))}
+ ${field(d.id+'_payoff','9. ยอดปิดบัญชีวันนี้ (บาท)',inp(d,'payoff','ถ้าทราบ','number'),'ยอดที่ต้องจ่ายเพื่อปิดหนี้ ณ วันที่ตรวจสอบ')}
+ ${field(d.id+'_overdue','ค้างชำระกี่เดือน (ถ้ามี)',inp(d,'overdue','เช่น 2','number'))}
+ ${field(d.id+'_notes','หมายเหตุเพิ่มเติม',`<textarea id="${d.id}_notes" data-id="${esc(d.id)}" data-key="notes" placeholder="เช่น เจ้าหนี้เรียกเก็บรายวัน หรือมีหนังสือทวงถาม">${esc(d.notes)}</textarea>`,'',true)}
+ </div></div>`).join('');
+ $('countBadge').textContent=data.debts.length+' รายการ';
+ updateSummary();
+}
+function updateSummary(){const total=data.debts.reduce((s,d)=>s+num(d.balance),0);const monthly=data.debts.reduce((s,d)=>s+num(d.monthly),0);const payoffRows=data.debts.filter(d=>d.payoff!==''&&d.payoff!==null&&d.payoff!==undefined);const payoff=payoffRows.reduce((s,d)=>s+num(d.payoff),0);
+ $('sumBalance').textContent=fmt(total);$('sumMonthly').textContent=fmt(monthly);$('sumPayoff').textContent=fmt(payoff);$('payoffInfo').textContent='มีข้อมูล '+payoffRows.length+' จาก '+data.debts.length+' รายการ';
+ $('compareText').textContent=data.reported!==''?`เทียบกับยอดที่ประมาณไว้ ${fmt(num(data.reported))} บาท: ${Math.abs(total-num(data.reported))<.01?'ยอดตรงกัน':(total>num(data.reported)?'กรอกสูงกว่า':'กรอกต่ำกว่า')+' '+fmt(Math.abs(total-num(data.reported)))+' บาท'}`:'ถ้ากรอกยอดรวมที่เคยประมาณไว้ด้านบน ระบบจะช่วยเทียบยอดให้';
+ $('summaryRows').innerHTML=data.debts.map((d,i)=>`<tr><td>${esc(d.creditor||'รายที่ '+(i+1))}</td><td>${esc(typeLabels[d.kind]||'-')}</td><td>${fmt(num(d.balance))}</td><td>${fmt(num(d.monthly))}</td><td>${esc(statusLabels[d.status]||'-')}</td></tr>`).join('');}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(data));$('saveStatus').textContent='✓ บันทึกในเครื่องแล้ว';}catch(e){$('saveStatus').textContent='ไม่สามารถบันทึกในเครื่องได้';}}
+function updateFrom(el){const id=el.getAttribute('data-id'),key=el.getAttribute('data-key'),global=el.getAttribute('data-global');if(global){data[global]=el.value;persist();updateSummary();return;}if(id&&key){const d=data.debts.find(x=>x.id===id);if(d){d[key]=el.value;persist();updateSummary();}}}
+document.addEventListener('input',e=>{if(e.target.matches('[data-global],[data-id][data-key]'))updateFrom(e.target);});document.addEventListener('change',e=>{if(e.target.matches('[data-global],[data-id][data-key]'))updateFrom(e.target);});
+$('debtList').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;if(data.debts.length===1){alert('อย่างน้อยต้องมี 1 รายการ หากยังไม่มีข้อมูลสามารถเว้นช่องไว้ได้');return;}if(!confirm('ต้องการลบรายการเจ้าหนี้นี้ใช่ไหม?'))return;data.debts=data.debts.filter(x=>x.id!==b.dataset.remove);persist();renderDebts();});
+$('addDebt').addEventListener('click',()=>{data.debts.push(emptyDebt());persist();renderDebts();document.querySelector('.debt-card:last-child').scrollIntoView({behavior:'smooth',block:'start'});});
+function summaryText(){const lines=['สรุปรายการหนี้','ผู้กรอก: '+(data.borrower||'ไม่ระบุ'),'วันที่ตรวจยอด: '+(data.asof||'ไม่ระบุ'),''];data.debts.forEach((d,i)=>{lines.push(`เจ้าหนี้รายที่ ${i+1}: ${d.creditor||'ไม่ระบุ'}`,`- ประเภท: ${typeLabels[d.kind]||'ไม่ระบุ'}`,`- ยอดคงเหลือ: ${d.balance!==''?fmt(num(d.balance))+' บาท':'ไม่ทราบ'}`,`- ดอกเบี้ย: ${d.rate!==''?d.rate+'% '+(d.rateUnit==='month'?'ต่อเดือน':'ต่อปี'):'ไม่ทราบ'}`,`- ค่างวด: ${d.monthly!==''?fmt(num(d.monthly))+' บาท/เดือน':'ไม่ทราบ'}`,`- ครบกำหนด: ${d.due||'ไม่ทราบ'}`,`- สถานะ: ${statusLabels[d.status]||'ไม่ระบุ'}`,`- หลักประกัน: ${securityLabels[d.security]||'ไม่ระบุ'}`,`- ยอดปิดบัญชี: ${d.payoff!==''?fmt(num(d.payoff))+' บาท':'ไม่ทราบ'}`,`- ค้างชำระ: ${d.overdue!==''?d.overdue+' เดือน':'ไม่ทราบ'}`,`- หมายเหตุ: ${d.notes||'-'}`,'');});const total=data.debts.reduce((s,d)=>s+num(d.balance),0);const monthly=data.debts.reduce((s,d)=>s+num(d.monthly),0);lines.push('---',`ยอดหนี้รวมจากรายการ: ${fmt(total)} บาท`,`ค่างวดรวม: ${fmt(monthly)} บาท/เดือน`,`ยอดที่เคยประมาณไว้: ${data.reported!==''?fmt(num(data.reported))+' บาท':'ไม่ระบุ'}`,`รายได้ปัจจุบัน: ${data.income!==''?fmt(num(data.income))+' บาท/เดือน':'ไม่ทราบ'}`,`ค่าใช้จ่ายจำเป็น: ${data.living!==''?fmt(num(data.living))+' บาท/เดือน':'ไม่ทราบ'}`,`รวมเงินยืมคนในครอบครัวหรือไม่: ${data.included==='yes'?'รวมแล้ว':data.included==='no'?'ยังไม่รวม':'ไม่แน่ใจ'}`,`ข้อมูลเพิ่มเติม: ${data.notes||'-'}`);return lines.join('\n');}
+function toast(t){const el=$('toast');el.textContent=t;el.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',4300);}
+async function copyText(){const t=summaryText();try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(t);toast('คัดลอกแล้ว วางข้อมูลใน LINE ได้เลย');return;}throw Error('clipboard');}catch(e){const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-10000px;top:0';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(ok){toast('คัดลอกแล้ว วางข้อมูลใน LINE ได้เลย');return;}prompt('คัดลอกข้อความนี้แล้วนำไปส่ง',t);}}
+$('copy').addEventListener('click',copyText);
+$('share').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:'สรุปรายการหนี้',text:summaryText()});return;}catch(e){if(e.name==='AbortError')return;}}await copyText();toast('เครื่องนี้เปิดเมนูแชร์ไม่ได้ — คัดลอกสรุปแล้ว กรุณาวางส่งทาง LINE');});
+function csvEscape(x){let s=String(x??'');if(/^[=+@\-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';}
+$('csv').addEventListener('click',()=>{const rows=[['ชื่อเจ้าหนี้','ประเภทหนี้','ยอดคงเหลือ(บาท)','ดอกเบี้ย(%)','หน่วยดอกเบี้ย','ค่างวด(บาท/เดือน)','วันครบกำหนด','สถานะ','หลักประกัน','ยอดปิดบัญชี(บาท)','ค้างชำระ(เดือน)','หมายเหตุ'],...data.debts.map(d=>[d.creditor,typeLabels[d.kind]||'',d.balance,d.rate,d.rateUnit==='month'?'ต่อเดือน':'ต่อปี',d.monthly,d.due,statusLabels[d.status]||'',securityLabels[d.security]||'',d.payoff,d.overdue,d.notes])];const blob=new Blob(['\ufeff'+rows.map(r=>r.map(csvEscape).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='debt-record-'+(data.asof||'today')+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('ดาวน์โหลดไฟล์ CSV แล้ว');});
+$('print').addEventListener('click',()=>window.print());
+$('clear').addEventListener('click',()=>{if(!confirm('ล้างข้อมูลทั้งหมดในเครื่องนี้? การล้างข้อมูลไม่สามารถย้อนกลับได้'))return;data=fresh();persist();loadGlobals();renderDebts();toast('ล้างข้อมูลเรียบร้อย');});
+function loadGlobals(){for(const key of ['borrower','asof','income','living','included','reported','notes']){const el=document.querySelector('[data-global="'+key+'"]');if(el)el.value=data[key]??'';}}
+loadGlobals();renderDebts();
+})();
+</script>
+</body>
+</html>
